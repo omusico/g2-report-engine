@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>$args.getReportDefinition().getName() - User Input</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        
+        <style type="text/css">
+            @import "http://o.aolcdn.com/dojo/1.3/dijit/themes/tundra/tundra.css";
+            @import "http://o.aolcdn.com/dojo/1.3/dojo/resources/dojo.css"
+        </style>
+        <script type="text/javascript" src="http://o.aolcdn.com/dojo/1.3/dojo/dojo.xd.js" 
+                djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript">
+                
+            /** Add required dojo elements */
+            dojo.require("dojo.parser");
+            dojo.require("dijit.form.DateTextBox");
+            dojo.require("dijit.form.TextBox");
+            dojo.require("dijit.form.CurrencyTextBox");
+            dojo.require("dijit.form.NumberTextBox");
+            dojo.require("dijit.form.ValidationTextBox");
+            dojo.require("dijit.form.FilteringSelect");
+            dojo.require("dijit.form.Button");
+            dojo.require("dijit.form.Form");
+            dojo.require("dijit.Dialog");   
+                        
+            /** 
+             * Handles form submission, ensure all values are valid
+             * and all required values were provided.
+             */
+            dojo.addOnLoad(function(){
+                var myForm = dijit.byId("form");
+                dojo.connect(myForm, "onSubmit", function(e){ 
+                    if (!myForm.isValid()){
+                        e.preventDefault();
+                        dijit.byId('dialog').show();
+                    }
+                });
+            });
+        </script>
+        
+        <style type="text/css">
+            body { font-family: 12px; font-family: arial; }
+            h1 { border-top:1px solid #6B90DA; line-height:20px; padding:1px 0.5em 2px; margin:15px 0px 15px 0px; 
+                background:#EBEFF9; font-size:16px; font-weight:bold; }
+            .form-row { display:inline;vertical-align:middle; font-family: arial; font-size: 13px; }
+            .field-label { font-weight:bold; display:inline; vertical-align:middle; padding: 0px 0px 3px 3px; }
+            .field-input { padding:0px 15px 5px 0px; display:inline;vertical-align:middle; }
+            
+            /* Override Dojo Styles */
+            /*.tundra .dijitInputField input, .tundra .dijitTextBox, .tundra .dijitComboBox, 
+            .tundra .dijitSpinner { height:20px; }*/
+            .dijitPopup { font-size: 12px; }
+        </style>
+    </head>
+    <body class="tundra">
+        
+        
+        
+        <table>
+            <tr>
+                <td valign="top" style="width:70px;">
+                    <img src='http://www.gstatic.com/codesite/ph/images/defaultlogo.png' />
+                </td>
+                <td valign="center">
+                    <b>G2 Report Engine</b><br/>
+                    <span style="font-size:13px;font-style:italic;">a Java reporting framework</span>
+                </td>
+            </tr>
+        </table>
+        
+        <h1>Summary</h1>
+        
+        
+        <table width="100%">
+            <tr>
+                <td style="font-size:13px;" valign="top">
+                    $!{args.getReportDefinition().getDescription()}
+                </td>
+                <td style="width:400px;" valign="top">
+                    <div style="font-size:13px;border:0px solid #6B90DA;background:#EBEFF9;#DDF8CC;#F7F7F7;padding:5px;">
+                        <b>Report Name:</b>  $!{args.getReportDefinition().getName()}</br>
+                        <b>Report Author:</b>  $!{args.getReportDefinition().getAuthor()}</br>
+                        <b>Created:</b>  $date.format('short',$args.getReportDefinition().getCreated())<br/>
+                        <b>Updated:</b>  $date.format('short',$args.getReportDefinition().getUpdated())
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        
+        <form method='post' action='$!{args.getServletUri()}'  
+              dojoType="dijit.form.Form" id="form" name="form">
+            
+            <h1>Parameters</h1>
+            #foreach( $param in $args.getReportDefinition().getReportParameters() )
+            #set ( $type=$param.getClass().getSimpleName() )
+
+            
+            
+            <div class="form-row">
+                <div class="field-label">
+                    <label for="$param.getName()">$param.getName():</label>
+                </div>
+                <div class="field-input">
+                    #if ( $type == "ReportParameterTextBox" ) 
+                    <input dojoType="dijit.form.TextBox" required="$param.getRequired()" 
+                           id="$param.getName()" name="$param.getName()" 
+                           value="$!{param.getValue()}" />
+                    #elseif ( $type == "ReportParameterDateTextBox" )
+                    <input dojoType="dijit.form.DateTextBox" required="$param.getRequired()" 
+                           id="$param.getName()" name="$param.getName()" 
+                           value="$!{param.getValue()}" />
+                    #elseif ($type=="ReportParameterRegexTextBox" )
+                    <input dojoType="dijit.form.ValidationTextBox" required="$param.getRequired()" 
+                           id="$param.getName()" name="$param.getName()" 
+                           value="$!{param.getValue()}" 
+                           regExp="$param.getValidationString()" />
+                    #elseif ($type == "ReportParameterDropdown")
+                    <select dojoType="dijit.form.FilteringSelect" name="$param.getName()" 
+                           id="$param.getName()">
+                        #foreach( $entry in $param.getItems().entrySet())
+                        <option value="$entry.getKey()">$entry.getValue()</option>
+                        #end
+                    </select>
+                    #end
+                </div>
+            </div>
+            #end
+            
+            <h1>Format</h1>
+            
+            <div class="form-row">
+                <select name='view' dojoType="dijit.form.FilteringSelect"  
+                        style="vertical-align:middle;">
+                    <option value='html' selected='true'>Web Report</option>
+                    <option value='excel'>Excel Export</option>  
+                </select>
+                <input type="submit" value="Run Report" 
+                       style="vertical-align:middle;" />
+            </div>
+            <input type="hidden" name="report" value="$args.getReportFile()" />
+            
+            <div style="display:none;" dojoType="dijit.Dialog" open="false" 
+                 id="dialog" title="Missing Form Values">
+                Please ensure: 
+                <ul style="margin-top:0px;">
+                    <li> all values are valid </li>
+                <li> all required values are provided</li></ul>
+                <button dojoType="dijit.form.Button" 
+                        onClick="javascript:dijit.byId('dialog').hide();">OK</button>
+            </div>
+            
+        </form>
+    </body>
+</html>
