@@ -67,6 +67,9 @@ public class GridCell extends Element {
     @Override
     public void build(HTMLBuilderArgs args) {
         
+        //wrap w/ div for style purposes
+        args.getHtml().append("<div>");
+        
         //render cell open
         args.getHtml().append("<td");
         this.addClassToTag(args);
@@ -98,6 +101,9 @@ public class GridCell extends Element {
         
         //render cell close
         args.getHtml().append("</td>");
+        
+        //end wrapping div
+        args.getHtml().append("</div>");
     }
 
 }

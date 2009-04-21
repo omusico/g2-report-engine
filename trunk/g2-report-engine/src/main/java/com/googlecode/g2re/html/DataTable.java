@@ -1,5 +1,7 @@
 package com.googlecode.g2re.html;
 
+import com.googlecode.g2re.html.style.TextAlign;
+import com.googlecode.g2re.html.style.VerticalAlign;
 import com.googlecode.g2re.jdbc.DataSet;
 import com.googlecode.g2re.util.DataSetUtil;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ public class DataTable extends BoundElement {
     private List<GridRow> bodyRows = new ArrayList<GridRow>();
     private List<GridRow> footerRows = new ArrayList<GridRow>();
     private List<DataGroup> dataGroups = new ArrayList<DataGroup>();
+    private VerticalAlign verticalAlign = null;
+    private TextAlign textAlign = null;
 
     private int cellPadding=0;
     private int cellSpacing=0;
@@ -70,8 +74,24 @@ public class DataTable extends BoundElement {
     public void setHeaderRows(List<GridRow> headerRows) {
         this.headerRows = headerRows;
     }
+
+    public TextAlign getTextAlign() {
+        return textAlign;
+    }
+
+    public void setTextAlign(TextAlign textAlign) {
+        this.textAlign = textAlign;
+    }
+
+    public VerticalAlign getVerticalAlign() {
+        return verticalAlign;
+    }
+
+    public void setVerticalAlign(VerticalAlign verticalAlign) {
+        this.verticalAlign = verticalAlign;
+    }
     
-    
+
     
     
     @Override
@@ -86,6 +106,15 @@ public class DataTable extends BoundElement {
                 .append("' ");
         this.addClassToTag(args);
         this.addIdToTag(args);
+        
+        if(this.getVerticalAlign()!=null) 
+            args.getHtml().append("valign='")
+                    .append(getVerticalAlign())
+                    .append("' ");
+        if(this.getTextAlign()!=null) 
+            args.getHtml().append("align='")
+                    .append(getTextAlign())
+                    .append("' ");
         args.getHtml().append(">");
         
         //STEP 1: check to see if we have grouping
@@ -109,11 +138,14 @@ public class DataTable extends BoundElement {
         
        //STEP 3: render basic HTML table.. pretty simple
         //a) render the header row(s)
+        args.getHtml().append("<thead>");
         for(int i=0;i<getHeaderRows().size();i++){
             getHeaderRows().get(i).build(args);
         }
+        args.getHtml().append("</thead>");
         
         //b) render the data rows
+        args.getHtml().append("<tbody>");
         for(int i=0;i<resultList.size();i++){
             
             //sets the current data row
@@ -123,6 +155,7 @@ public class DataTable extends BoundElement {
                 getBodyRows().get(j).build(args);
             }
         }
+        args.getHtml().append("</tbody>");
         
         //set current data row back to null
         args.setCurrentDataRow(null);

@@ -1,0 +1,257 @@
+<com.googlecode.g2re.domain.ReportDefinition>
+  <name>Pet Location Report</name>
+  <created>2009-04-21 01:22:09.375 MST</created>
+  <updated>2009-04-21 01:22:09.375 MST</updated>
+  <description>desc goes here</description>
+  <author>Brad Rydzewski</author>
+  <dataConnections>
+    <com.googlecode.g2re.domain.JdbcConnection>
+      <name>PetStoreDataSource</name>
+      <driverClass>org.h2.Driver</driverClass>
+      <databaseUrl>jdbc:h2:mem:test-db;DB_CLOSE_DELAY=-1</databaseUrl>
+      <databaseUser>sa</databaseUser>
+      <databasePassword></databasePassword>
+      <databaseJndiName>jndi/PetStoreDataSource</databaseJndiName>
+    </com.googlecode.g2re.domain.JdbcConnection>
+  </dataConnections>
+  <reportParameters>
+    <com.googlecode.g2re.domain.ReportParameterTextBox>
+      <name>Minimum Price</name>
+      <prompt>Enter the minimum price range</prompt>
+      <value class="int">0</value>
+      <required>true</required>
+    </com.googlecode.g2re.domain.ReportParameterTextBox>
+    <com.googlecode.g2re.domain.ReportParameterTextBox>
+      <name>Maximum Price</name>
+      <prompt>Enter the maximum price range</prompt>
+      <value class="int">999999999</value>
+      <required>true</required>
+    </com.googlecode.g2re.domain.ReportParameterTextBox>
+  </reportParameters>
+  <dataQueries>
+    <com.googlecode.g2re.domain.JdbcQuery>
+      <name>PetLocationQuery</name>
+      <columns>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>Name</name>
+          <order>0</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>Description</name>
+          <order>1</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>Category</name>
+          <order>2</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>Price</name>
+          <order>3</order>
+          <type>DOUBLE</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>Image</name>
+          <order>4</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>City</name>
+          <order>5</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>State</name>
+          <order>6</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+        <com.googlecode.g2re.domain.DataColumn>
+          <name>Zip</name>
+          <order>7</order>
+          <type>STRING</type>
+        </com.googlecode.g2re.domain.DataColumn>
+      </columns>
+      <parameters>
+        <com.googlecode.g2re.domain.JdbcParameter>
+          <position>1</position>
+          <type>INTEGER</type>
+          <reportParameter class="com.googlecode.g2re.domain.ReportParameterTextBox" reference="../../../../../reportParameters/com.googlecode.g2re.domain.ReportParameterTextBox"/>
+        </com.googlecode.g2re.domain.JdbcParameter>
+        <com.googlecode.g2re.domain.JdbcParameter>
+          <position>2</position>
+          <type>INTEGER</type>
+          <reportParameter class="com.googlecode.g2re.domain.ReportParameterTextBox" reference="../../../../../reportParameters/com.googlecode.g2re.domain.ReportParameterTextBox[2]"/>
+        </com.googlecode.g2re.domain.JdbcParameter>
+      </parameters>
+      <filters/>
+      <sqlQuery>SELECT item.name, item.description, categoryid, price, imagethumburl, city, state, zip FROM item, address, product WHERE item.address_addressid = address.addressid AND item.productid = product.productid AND price between ? and ?</sqlQuery>
+      <dataConnection reference="../../../dataConnections/com.googlecode.g2re.domain.JdbcConnection"/>
+    </com.googlecode.g2re.domain.JdbcQuery>
+  </dataQueries>
+  <htmlWebPage>
+    <renderAsDiv>false</renderAsDiv>
+    <childElements>
+      <com.googlecode.g2re.html.DataTable>
+        <dataQuery class="com.googlecode.g2re.domain.JdbcQuery" reference="../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery"/>
+        <headerRows>
+          <com.googlecode.g2re.html.GridRow>
+            <cells>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>Name</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>Description</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>City</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>State</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>Zip</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>Price</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.RawHTML">
+                  <value>Image</value>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+            </cells>
+          </com.googlecode.g2re.html.GridRow>
+        </headerRows>
+        <bodyRows>
+          <com.googlecode.g2re.html.GridRow>
+            <cells>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>false</scriptable>
+                  <value reference="../../../../../../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery/columns/com.googlecode.g2re.domain.DataColumn"/>
+                  <order>0</order>
+                  <numberFormat></numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>false</scriptable>
+                  <value reference="../../../../../../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery/columns/com.googlecode.g2re.domain.DataColumn[2]"/>
+                  <order>1</order>
+                  <numberFormat></numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>false</scriptable>
+                  <value reference="../../../../../../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery/columns/com.googlecode.g2re.domain.DataColumn[6]"/>
+                  <order>2</order>
+                  <numberFormat></numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>false</scriptable>
+                  <value reference="../../../../../../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery/columns/com.googlecode.g2re.domain.DataColumn[7]"/>
+                  <order>3</order>
+                  <numberFormat></numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>false</scriptable>
+                  <value reference="../../../../../../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery/columns/com.googlecode.g2re.domain.DataColumn[8]"/>
+                  <order>4</order>
+                  <numberFormat></numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>true</scriptable>
+                  <script>&quot;&lt;img src=&apos;&quot; + row[4].toString() + &quot;&apos; /&gt;&quot;</script>
+                  <order>6</order>
+                  <numberFormat></numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+              <com.googlecode.g2re.html.GridCell>
+                <order>0</order>
+                <columnSpan>0</columnSpan>
+                <rowSpan>0</rowSpan>
+                <child class="com.googlecode.g2re.html.DataElement">
+                  <scriptable>false</scriptable>
+                  <value reference="../../../../../../../../../dataQueries/com.googlecode.g2re.domain.JdbcQuery/columns/com.googlecode.g2re.domain.DataColumn[4]"/>
+                  <order>5</order>
+                  <numberFormat>$###,###,###,##0.00</numberFormat>
+                  <dateFormat></dateFormat>
+                </child>
+              </com.googlecode.g2re.html.GridCell>
+            </cells>
+          </com.googlecode.g2re.html.GridRow>
+        </bodyRows>
+        <footerRows/>
+        <dataGroups/>
+        <cellPadding>1</cellPadding>
+        <cellSpacing>0</cellSpacing>
+      </com.googlecode.g2re.html.DataTable>
+    </childElements>
+  </htmlWebPage>
+</com.googlecode.g2re.domain.ReportDefinition>
