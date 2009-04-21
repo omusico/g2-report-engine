@@ -42,6 +42,7 @@ public class Style implements StyledElement {
     private TextDecoration textDecoration = null;
     private TextAlign textAlign = null;
     private BorderCollapse borderCollapse = null;
+    private VerticalAlign verticalAlign = null;
     private List<CustomStyleAttribute> customAttributes 
             = new ArrayList<CustomStyleAttribute>();
     
@@ -268,6 +269,14 @@ public class Style implements StyledElement {
 
     public void setWhiteSpace(WhiteSpace whiteSpace) {
         this.whiteSpace = whiteSpace;
+    }
+
+    public VerticalAlign getVerticalAlign() {
+        return verticalAlign;
+    }
+
+    public void setVerticalAlign(VerticalAlign verticalAlign) {
+        this.verticalAlign = verticalAlign;
     }
 
     @Override

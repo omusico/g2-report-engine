@@ -29,14 +29,14 @@ public class HTMLReportBuilder {
         
     }
     
-    public static void build(File reportDefinitionXML, Map params, File reportResultsFile) {
+    public static void build(File reportDefinitionXML, Map params, File reportResultsFile, boolean renderAsDiv) {
 
         BufferedWriter out = null;
 
         try {
 
             //get report results
-            String results = build(reportDefinitionXML, params);
+            String results = build(reportDefinitionXML, params, renderAsDiv);
 
             //write to file
             out = new BufferedWriter(new FileWriter(reportResultsFile));
@@ -62,13 +62,13 @@ public class HTMLReportBuilder {
      * @param params Parameters (ie JDBC) to pass into the report (Optional)
      * @return
      */
-    public static String build(File reportDefinitonXML, Map params) {
+    public static String build(File reportDefinitonXML, Map params, boolean renderAsDiv) {
 
         /* Load the report from an XML file */
         ReportDefinition reportDefinition =
                 ReportSerializationUtil.fromXMLFile(reportDefinitonXML);
 
-        return build(reportDefinition, params);
+        return build(reportDefinition, params, renderAsDiv);
     }
 
     /**
@@ -79,7 +79,7 @@ public class HTMLReportBuilder {
      * @param params Parameters (ie JDBC) to pass into the report (Optional)
      * @return report in HTML format
      */
-    public static String build(ReportDefinition reportDefinition, Map params) {
+    public static String build(ReportDefinition reportDefinition, Map params, boolean renderAsDiv) {
 
         
         //make sure an Excel output has been defined
@@ -120,6 +120,7 @@ public class HTMLReportBuilder {
         
         //get document and render
         WebPage document = reportDefinition.getWebPage();
+        document.setRenderAsDiv(renderAsDiv);
         
         //build and return output
         return document.build(args);

@@ -1,6 +1,7 @@
 package com.googlecode.g2re.html;
 
 import com.googlecode.g2re.html.style.Style;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +10,12 @@ import java.util.List;
  * Contains one or many child elements, as specified in the ReportDefinition
  * @author Brad Rydzewski
  */
-public class WebPage  {
+public class WebPage {
 
     private List<Style> styles = null;
+    @XStreamOmitField
     private boolean renderAsDiv;
     private List<Element> childElements;
-    
-    
 
     public List<Style> getStyles() {
         return styles;
@@ -24,11 +24,11 @@ public class WebPage  {
     public void setStyles(List<Style> styles) {
         this.styles = styles;
     }
-    
-    public WebPage addStyle(Style style){
-        if(getStyles()==null)
+
+    public WebPage addStyle(Style style) {
+        if (getStyles() == null) {
             setStyles(new ArrayList<Style>());
-        
+        }
         getStyles().add(style);
         return this;
     }
@@ -48,39 +48,43 @@ public class WebPage  {
     public void setRenderAsDiv(boolean renderAsDiv) {
         this.renderAsDiv = renderAsDiv;
     }
-    
-    public void addChildElements(Element... elements){
-        if(getChildElements()==null)
+
+    public void addChildElements(Element... elements) {
+        if (getChildElements() == null) {
             setChildElements(new ArrayList<Element>());
-        
-        for(Element element : elements){
+        }
+        for (Element element : elements) {
             getChildElements().add(element);
         }
     }
-    
-    public WebPage addChildElement(Element element){
-        if(getChildElements()==null)
+
+    public WebPage addChildElement(Element element) {
+        if (getChildElements() == null) {
             setChildElements(new ArrayList<Element>());
-        
+        }
         getChildElements().add(element);
         return this;
     }
-    
-    
+
     public String build(HTMLBuilderArgs args) {
-        
-        for(Element element : getChildElements()){
+
+        for (Element element : getChildElements()) {
             element.build(args);
         }
-        
+
+
         StringBuilder document = new StringBuilder();
-        document.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n");
-        document.append("<html>");
-        document.append("<head>");
-        
-        if(getStyles()!=null){
+
+        //if we are rendering as div, we don't create the html / head tags
+        if (!isRenderAsDiv()) {
+            document.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n");
+            document.append("<html>");
+            document.append("<head>");
+        }
+
+        if (getStyles() != null) {
             document.append("<style> ");
-            for(Style style : getStyles()){
+            for (Style style : getStyles()) {
                 document.append(".");
                 document.append(style.getName());
                 document.append(" {");
@@ -89,8 +93,8 @@ public class WebPage  {
             }
             document.append("</style>");
         }
-        
-        
+
+
         //render scripts that need to be imported, using <script/>
         String[] scriptFiles = new String[args.getScriptFiles().size()];
         args.getScriptFiles().toArray(scriptFiles);
@@ -102,7 +106,7 @@ public class WebPage  {
         //render modules (good visualization) that need to be imported, using google.load
         String[] modules = new String[args.getGoogleModules().size()];
         args.getGoogleModules().toArray(modules);
-        
+
         //if there are moduels to load, we'll load them and add js init()
         if (modules.length > 0) {
             document.append(" <script>\n");
@@ -118,19 +122,35 @@ public class WebPage  {
         } else {
             document.append("<script>");
         }
-        
+
         document.append(" function init(){ ");
         document.append(args.getPreScript());
         document.append(" } ");
         document.append("</script>");
-        document.append("</head>");
-        document.append("<body>");
+
+        if (!isRenderAsDiv()) {
+            document.append("</head>");
+            document.append("<body>");
+        } else {
+            document.append("<div id='g2-report-body'>");
+        }
+
         document.append(args.getHtml());
-        document.append("</body>");
+
+        if (!isRenderAsDiv()) {
+            document.append("</body>");
+        } else {
+            document.append("</div>");
+        }
+
         document.append("<script>");
         document.append(args.getPostScript());
         document.append("</script>");
-        document.append("</html>");
+
+        if (!isRenderAsDiv()) {
+            document.append("</html>");
+        }
+
         return document.toString();
     }
 }

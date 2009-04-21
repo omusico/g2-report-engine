@@ -22,7 +22,7 @@ public class ReportDefinition {
     private List<ReportParameter> reportParameters = new ArrayList<ReportParameter>();
     private List<DataQuery> dataQueries = new ArrayList<DataQuery>();
     private Workbook excelWorkbook = null;
-    private WebPage htmlWebPage;
+    private WebPage htmlWebPage = new WebPage();
 
 
     public WebPage getWebPage() {
@@ -31,11 +31,6 @@ public class ReportDefinition {
 
     public void setWebPage(WebPage htmlDocument) {
         this.htmlWebPage = htmlDocument;
-    }
-
-    public WebPage addWebPage(){
-        setWebPage(new WebPage());
-        return getWebPage();
     }
     
     public Date getCreated() {

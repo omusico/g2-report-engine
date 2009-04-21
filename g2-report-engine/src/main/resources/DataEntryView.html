@@ -89,7 +89,7 @@
         </table>
         
         
-        <form method='post' action='$!{args.getServletUri()}'  
+        <form method='get' action='$!{args.getServletUri()}'  
               dojoType="dijit.form.Form" id="form" name="form">
             
             <h1>Parameters</h1>
@@ -104,15 +104,15 @@
                 </div>
                 <div class="field-input">
                     #if ( $type == "ReportParameterTextBox" ) 
-                    <input dojoType="dijit.form.TextBox" required="$param.getRequired()" 
+                    <input dojoType="dijit.form.TextBox" required="$param.isRequired()" 
                            id="$param.getName()" name="$param.getName()" 
                            value="$!{param.getValue()}" />
                     #elseif ( $type == "ReportParameterDateTextBox" )
-                    <input dojoType="dijit.form.DateTextBox" required="$param.getRequired()" 
+                    <input dojoType="dijit.form.DateTextBox" required="$param.isRequired()" 
                            id="$param.getName()" name="$param.getName()" 
                            value="$!{param.getValue()}" />
                     #elseif ($type=="ReportParameterRegexTextBox" )
-                    <input dojoType="dijit.form.ValidationTextBox" required="$param.getRequired()" 
+                    <input dojoType="dijit.form.ValidationTextBox" required="$param.isRequired()" 
                            id="$param.getName()" name="$param.getName()" 
                            value="$!{param.getValue()}" 
                            regExp="$param.getValidationString()" />

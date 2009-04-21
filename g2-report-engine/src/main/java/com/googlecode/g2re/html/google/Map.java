@@ -22,7 +22,7 @@ public class Map extends BoundElement {
     private DataColumn addressColumn;
     private DataColumn descriptionColumn;
     private boolean showTip = false;
-    private JdbcQuery dataSet;
+    /*private JdbcQuery dataSet;
 
     
     public JdbcQuery getDataSet() {
@@ -32,7 +32,7 @@ public class Map extends BoundElement {
     
     public void setDataSet(JdbcQuery dataSet) {
         this.dataSet = dataSet;
-    }
+    }*/
 
     public DataColumn getAddressColumn() {
         return addressColumn;
@@ -97,7 +97,7 @@ public class Map extends BoundElement {
         int descColInt = getDescriptionColumn().getOrder();
 
         //get widgets dataset
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         //get sequence for this object, to distinguish it from other DOM objects and JS variables

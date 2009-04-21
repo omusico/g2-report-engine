@@ -47,7 +47,7 @@ public class CommandLineRunner
             
             //build HTML formatted report
             HTMLReportBuilder builder = new HTMLReportBuilder();
-            builder.build(inputFile, null, outputFile);
+            builder.build(inputFile, null, outputFile, false);
             
         } else if (format == ReportFormat.Excel){
             
