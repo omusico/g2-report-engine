@@ -1,6 +1,6 @@
 This is a very quick introduction to the g2 Report Engine. Skim and read to get an idea of how to build and execute a simple report.
 
-_Note that the g2 Report Engine does not currently include a GUI Report Builder, so everything must be built via Java code..._
+_Note: the g2 Report Engine does not currently include a GUI Report Builder, so everything must be built via Java code..._
 
 ==== Create A Report ====
 
