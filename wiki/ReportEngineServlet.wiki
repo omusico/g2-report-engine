@@ -42,7 +42,7 @@ _Example:_ http://localhost:8084/ReportViewer.htm?view=input&report=c:\PetLocati
 === Screenshots ===
 
 This is an example of the user input screen where the user can provide their own input parameters for the report:
-[http://g2-report-engine.googlecode.com/svn/docs/screenshot-user-input.png]
+[http://g2-report-engine.googlecode.com/svn/docs/screenshot-user-input-thum.png]
 
 This is an example of an HTML generate report, once the user has provided the input parameters:
-[http://g2-report-engine.googlecode.com/svn/docs/screenshot-report-html.png]
+[http://g2-report-engine.googlecode.com/svn/docs/screenshot-report-html-thum.png]
