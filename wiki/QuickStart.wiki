@@ -4,7 +4,7 @@ _Note: the g2 Report Engine does not currently include a GUI Report Builder, so 
 
 ==== Create A Report ====
 
-The first step to building the report is to create the report definition and give your report a name, description, etc:
+The first step to building the report is to create the `ReportDefinition` and give your report a name, description, etc:
 {{{
 ReportDefinition report = new ReportDefinition();
 report.setName("my report");
@@ -54,7 +54,7 @@ DataTable table = new DataTable();
 table.setDataQuery(query1);
 }}}
 
-Now, we need to add header rows to the table. Create a GridRow object and add the header cells (1 for each column returned by the query). Once the header row is built, add it to the table's list of header rows. 
+Now, we need to add header rows to the table. Create a `GridRow` object and add the header cells (1 for each column returned by the query). Once the header row is built, add it to the table's list of header rows. 
 {{{
 GridRow tableHeader = new GridRow();
 tableHeader.addCell(GridCell(new RawHTML("Name")));
