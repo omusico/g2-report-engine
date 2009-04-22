@@ -1,2 +1,3 @@
   * [ReportEngineServlet  Web-based Reporting]
-    * [ReportEngineServlet Embedded Servlet]
+    * [ReportEngineServlet Using Embedded Servlet]
+    * [ReportEngineServlet Customizing Embedded Servlet]
