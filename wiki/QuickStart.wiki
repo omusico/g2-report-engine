@@ -26,7 +26,7 @@ report.getDataConnections().add(conn1);
 
 ==== Define Data Queries ====
 
-Now we need to create a data query (obviously, because with no data there is no report). A report can have one or more queries. So first, we will create a jdbc query object and provide it with a connection and a sql statement. 
+Now we need to create a data query (obviously, because with no data there is no report). A report can have one or more queries. So first, we will create a `JdbcQuery` object and provide it with the previously created connection and a sql statement. 
 {{{
 JdbcQuery query1 = new JdbcQuery();
 query1.setDataConnection(conn1);
