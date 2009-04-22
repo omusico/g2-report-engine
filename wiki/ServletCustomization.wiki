@@ -7,4 +7,4 @@ Coming soon!
 
 === Details ===
 
-All the pages rendered by the embedded servlet are driven by Velocity templates. We are in the process of adding the ability to provide custom velocity templates. These would allow you to customize the look and feel. Implementation is not yet complete, but you would probably specify your own customer templates in the web.xml, as custom attributes.
+All the pages rendered by the embedded servlet are driven by Velocity templates. We are adding the ability to override the Velocity templates used for each page, allowing developer to add a customized look and feel.
