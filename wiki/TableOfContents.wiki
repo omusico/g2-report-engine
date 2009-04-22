@@ -2,7 +2,7 @@
     * [Overview Overview]
     * [Dependencies Dependencies]
     * [QuickStart Getting Started]
-    * [CommandLineTools Command Line]
+  * [CommandLineTools Command Line]
   * [ServletIntegration Web and Servlet]
     * [ServletIntegration Getting Started]
     * [ServletCustomization Customization]
