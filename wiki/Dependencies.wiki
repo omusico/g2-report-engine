@@ -1,13 +1,13 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+|| *Library* || *Required (Y/N)* || *Description* ||
+|| xstream-1.3.jar || Yes || Used to serialize and de-serialze report definitions to xml format ||
+|| xpp3_min-1.1.4c.jar ||  Yes || Used by XStream to improve XML parsing ||
+|| jxl-2.6.jar ||  Yes || Used to generate a report in Excel format ||
+|| servlet-api-2.5.jar ||  No|| Used by the embedded servlet, providing web-based reporting. Only required when using embedded servlet ||
+|| velocity-1.5.jar ||  No|| Used by the embedded servlet, providing web-based reporting. Only required when using embedded servlet ||
+|| velocity-tools-generic-1.4.jar ||  No|| Used by to format dates in the Velocity templates ||
+|| commons-collections-3.1.jar || No || Only required if using Velocity / embedded servlet ||
+|| commons-lang-2.1.jar || No || Only required if using Velocity / embedded servlet ||
+|| oro-2.0.8.jar || No || Only required if using Velocity / embedded servlet ||
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
