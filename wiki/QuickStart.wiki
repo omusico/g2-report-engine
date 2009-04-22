@@ -1,7 +1,5 @@
 This is a very quick introduction to the g2 Report Engine. Skim and read to get an idea of how to build and execute a simple report.
 
-First make sure you get the g2 library and all required dependencies. Maven instructions can be found [http://code.google.com/p/g2-report-engine/wiki/Overview here]. When not using maven please include dependencies listed [http://code.google.com/p/g2-report-engine/wiki/Dependencies here].
-
 _Note that the g2 Report Engine does not currently include a GUI Report Builder, so everything must be built via Java code..._
 
 ==== Create A Report ====
