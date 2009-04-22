@@ -1,10 +1,10 @@
 #summary Embed Web-based reporting in your application
 
-== Introduction ==
+=== Introduction ===
 
 The report engine JAR includes a servlet providing web-based reporting. This can easily be integrated into an application by mapping the servlet in its web.xml.
 
-== Servlet Setup ==
+=== Servlet Setup ===
 
 If you are using Maven, you will need to add the g2 report engine to your pom file. If you are not using maven, you'll want to download the jar file and include it in your project.
 
@@ -29,7 +29,7 @@ The g2 report engine library includes a ServletDispatcher that will receive and 
     </servlet-mapping>
 }}}
 
-== Report URL and Params ==
+=== Report URL and Params ===
 
 You can now run the project and generate your reports using the following URL:
 http://localhost:8084/ReportViewer.htm
@@ -39,7 +39,7 @@ You will need to provide the page with 2 parameters:
  # view=input
 _Example:_ http://localhost:8084/ReportViewer.htm?view=input&report=c:\PetLocationReport.rxml
 
-== Screenshots ==
+=== Screenshots ===
 
 This is an example of the user input screen where the user can provide their own input parameters for the report:
 [http://g2-report-engine.googlecode.com/svn/docs/screenshot-user-input.png]
