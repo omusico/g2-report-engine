@@ -54,7 +54,7 @@ DataTable table = new DataTable();
 table.setDataQuery(query1);
 }}}
 
-Now, we need to add header rows to the table. Create a 'GridRow' object and add the header cells (1 for each column returned by the query). Once the header row is built, add it to the table's list of header rows. 
+Now, we need to add header rows to the table. Create a GridRow object and add the header cells (1 for each column returned by the query). Once the header row is built, add it to the table's list of header rows. 
 {{{
 GridRow tableHeader = new GridRow();
 tableHeader.addCell(GridCell(new RawHTML("Name")));
@@ -63,7 +63,7 @@ tableHeader.addCell(GridCell(new RawHTML("Price")));
 table.getHeaderRows().add(tableHeader);
 }}}
 
-Next we add rows to the body of the table. These rows will be bound to data elements from our query. So first we create the 'GridRow' and add its cells. Each cell contains a 'DataElement', which allows us to bind the cell to a column in the query. Note that the 'DataElement' expects a 'DataColumn' in the constructor. We provide the same data columns we created in the earlier steps:
+Next we add rows to the body of the table. These rows will be bound to data elements from our query. So first we create the `GridRow` and add its cells. Each cell contains a `DataElement`, which allows us to bind the cell to a column in the query. Note that the `DataElement` expects a `DataColumn` in the constructor. We provide the same data columns we created in the earlier steps:
 {{{
 GridRow tableBody = new GridRow();
 tableBody.addCell(GridCell(new DataElement(col1, 0)));
