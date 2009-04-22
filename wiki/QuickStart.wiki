@@ -17,7 +17,7 @@ Now we need to add a data source to our report. A project can have one or more d
 {{{
 JdbcConnection conn1 = new JdbcConnection();
 conn1.setDatabaseUser("sa");
-conn1.setDatabasePassword("y");
+conn1.setDatabasePassword("");
 conn1.setDriverClass("org.h2.Driver");
 conn1.setDatabaseUrl("jdbc:h2:mem:test-db;DB_CLOSE_DELAY=-1");
 
