@@ -16,6 +16,26 @@ We could also have saved this report as an XML string for easy storage in a data
 String xml = ReportSerializationUtil.toXMLString(report);
 }}}
 
+When the `ReportDefinition` is converted to XML it looks something like this:
+{{{
+<com.googlecode.g2re.domain.ReportDefinition>
+  <name>My First Report</name>
+  <created>2009-04-23 10:55:09.974 MST</created>
+  <updated>2009-04-23 10:55:09.974 MST</updated>
+  <dataConnections/>
+  <reportParameters/>
+  <dataQueries/>
+  <htmlWebPage>
+    <renderAsDiv>false</renderAsDiv>
+    <childElements>
+      <com.googlecode.g2re.html.Label>
+        <value>Hello World!</value>
+      </com.googlecode.g2re.html.Label>
+    </childElements>
+  </htmlWebPage>
+</com.googlecode.g2re.domain.ReportDefinition>
+}}}
+
 = XML to Java = 
 
 Once a `ReportDefinition` has been persisted to XML, either a file or string, it is easy to convert it back
