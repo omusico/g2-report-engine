@@ -76,10 +76,17 @@ Here is an example of how to execute a report from inside an `HttpServet`, and w
 @Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+  
+  /* report path provide in URL param (ex. c:/HelloWorld.rxml)
   String report = request.getParameter("reportPath");
+
+  /* get the report in HTML format in a String
   String html = HTMLReportBuilder.build(new File(report), new HashMap(), false);
+
+  /* write the report to the servlet response stream */
   response.getOutputStream.print(html);
+
+  /* set as HTML content */
   response.setContentType("text/html;charset=UTF-8");
 }
 }}}
