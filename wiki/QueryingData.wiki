@@ -68,7 +68,12 @@ tableHeader.addCell(GridCell(new Label("Price")));
 table.getHeaderRows().add(tableHeader);
 }}}
 
-Next we add rows to the body of the table. These rows will be bound to data elements from our query. So first we create the `GridRow` and add its cells. Each cell contains a `DataElement`, which allows us to bind the cell to a column in the query. Note that the `DataElement` expects a `DataColumn` in the constructor. We provide the same data columns we created in the earlier steps:
+Next we create the table body following these steps:
+ * Create a `GridRow` object
+ * Add a `GridCell` to the row for each column in the data query
+ * Add a `DataElement` to each cell
+
+Note how the `DataElement` expects a `DataColumn` in the constructor. By providing the `DataColumn` we bind the `DataElement` to the approriate field from the query results. Notice that we do not re-create data columns... we provide the data columns created in the prior steps.
 {{{
 GridRow tableBody = new GridRow();
 tableBody.addCell(GridCell(new DataElement(col1, 0)));
@@ -77,7 +82,9 @@ tableBody.addCell(GridCell(new DataElement(col3, 2)));
 table.getBodyRows().add(tableBody);
 }}}
 
-Finally, we add the `DataTable` to the report.
+Now the table is created and fully bound to a data query. The final step is to add the `DataTable` to the `ReportDefinition`.
 {{{
 report.getWebPage().addChildElement(table);
 }}}
+
+Now when we run the report we will see an HTML table that displays the query columns and results.
