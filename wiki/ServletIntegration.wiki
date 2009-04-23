@@ -6,7 +6,7 @@ The report engine JAR includes a servlet providing web-based reporting. This can
 
 = Servlet Setup =
 
-The g2 report engine library includes a ServletDispatcher that will receive and process requests to provide web-based reporting capabilities. You will need to add this to the project's web.xml.
+The g2 report engine library includes a `ServletDispatcher` that will receive and process requests to provide web-based reporting capabilities. You will need to add this to the project's web.xml.
 
 {{{
     <servlet>
