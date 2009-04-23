@@ -1,4 +1,4 @@
-  *Getting Started*
+ *Getting Started*
   * Getting Started
     * [Overview Introduction]
     * [Dependencies Dependencies]
@@ -19,4 +19,4 @@
       * [Overview Scripting]
       * [Overview Parameters]
 ----
-  *Getting Started*
+ *Getting Started*
