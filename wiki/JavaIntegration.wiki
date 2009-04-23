@@ -80,7 +80,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
   /* report path provide in URL param (ex. c:/HelloWorld.rxml)
   String report = request.getParameter("reportPath");
 
-  /* get the report in HTML format in a String
+  /* get the report in HTML format in a String */
   String html = HTMLReportBuilder.build(new File(report), new HashMap(), false);
 
   /* write the report to the servlet response stream */
