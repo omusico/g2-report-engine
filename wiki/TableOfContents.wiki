@@ -1,5 +1,4 @@
 *Getting Started*
-----
   * Getting Started
     * [Overview Introduction]
     * [Dependencies Dependencies]
@@ -19,3 +18,5 @@
       * [Overview Data Filtering]
       * [Overview Scripting]
       * [Overview Parameters]
+----
+*Getting Started*
