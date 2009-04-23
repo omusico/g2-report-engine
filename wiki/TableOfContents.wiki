@@ -1,13 +1,8 @@
-*Getting Started*
-  * Getting Started
+  * [Overview Getting Started]
     * [Overview Introduction]
     * [Dependencies Dependencies]
     * [QuickStart Download]
-  * Web and Servlet
-    * [ServletIntegration Getting Started]
-    * [ServletCustomization Customization]
-  * [CommandLineTools Command Line Tools]
-  * Tutorials
+  * [Overview Tutorials]
     * [Overview Building Reports]
     * [Overview Excel Formatting]
     * [Overview XML Serialization]
@@ -18,5 +13,7 @@
       * [Overview Data Filtering]
       * [Overview Scripting]
       * [Overview Parameters]
-----
-*Getting Started*
+  * [ServletIntegration Web and Servlet]
+    * [ServletIntegration Getting Started]
+    * [ServletCustomization Customization]
+  * [CommandLineTools Command Line Tools]
