@@ -1,10 +1,5 @@
 #summary Demonstrates how to create and generate a simple "Hello World" report
 
-= Introduction =
-
-Unfortunately the g2 Report Engine does not currently include a GUI Report Builder, so everything must be built via Java code.
-
-
 = Create A Report =
 
 The first step to building the report is to create the `ReportDefinition` and give your report a name, description, etc:
@@ -27,3 +22,5 @@ Finally, we can generate the report by calling the `HTMLReportBuilder.build` met
 {{{
 HTMLReportBuilder.build(report, new HashMap, new File("HelloWorld.html"));
 }}}
+
+_Note: the g2 Report Engine does not currently include a GUI Report Builder, so everything must be built via Java code_
