@@ -77,16 +77,16 @@ Here is an example of how to execute a report from inside an `HttpServet`, and w
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
   
-  /* report path provided via URL param (ex. c:/HelloWorld.rxml) */
+  /* report path provided via url param (ex. c:/HelloWorld.rxml) */
   String report = request.getParameter("reportPath");
 
-  /* generate the report as an HTML string */
+  /* generate the report as an html string */
   String html = HTMLReportBuilder.build(new File(report), new HashMap(), false);
 
   /* write the report to the servlet response stream */
   response.getOutputStream.print(html);
 
-  /* set as HTML content */
+  /* set as html content */
   response.setContentType("text/html;charset=UTF-8");
 }
 }}}
