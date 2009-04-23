@@ -7,7 +7,7 @@
     * [JavaIntegration Java Code]
     * [ServletIntegration Servlet]
       * [ServletIntegration Overview]
-      * [ServletCustomization Customization]
+      * Customization
     * Command Line
   * [MyFirstReport Tutorial]
     * [MyFirstReport My First Report]
@@ -18,9 +18,9 @@
     * Visualizations
     * Data Grouping
     * Data Filtering
-    * Data Formatting]
-    * Custom Scripting]
-    * Report Parameters]
+    * Data Formatting
+    * Custom Scripting
+    * Report Parameters
   * Examples
     * Petstore Database
     * Petstore Reports
