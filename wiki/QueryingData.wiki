@@ -15,7 +15,7 @@ report.getDataConnections().add(conn1);
 
 = Define Data Queries =
 
-Now we can create a data query. A report can have one or more queries. So first, we will create a `JdbcQuery` object and provide it with the previously created connection and a sql statement. 
+Now we can create a data query. A report can have one or more queries. So first, we will create a `JdbcQuery` object and provide it with the previously created connection and a sql statement.
 {{{
 JdbcQuery query1 = new JdbcQuery();
 query1.setDataConnection(conn1);
@@ -73,7 +73,7 @@ Next we create the table body following these steps:
  * Add a `GridCell` to the row for each column in the data query
  * Add a `DataElement` to each cell
 
-Note how the `DataElement` expects a `DataColumn` in the constructor. By providing the `DataColumn` we bind the `DataElement` to the approriate field from the query results. Notice that we do not re-create data columns... we provide the data columns created in the prior steps.
+Note how the `DataElement` expects a `DataColumn` in the constructor. By providing the `DataColumn` we bind the `DataElement` to the appropriate field from the query results. Notice that we do not re-create data columns... we provide the data columns created in the prior steps.
 {{{
 GridRow tableBody = new GridRow();
 tableBody.addCell(GridCell(new DataElement(col1, 0)));
