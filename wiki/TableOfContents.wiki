@@ -11,9 +11,9 @@
     * Command Line
   * [MyFirstReport Tutorial]
     * [MyFirstReport My First Report]
+    * [XMLSerialization Save to XML]
     * [QueryingData Querying Data]
     * [ExcelExport Excel Export]
-    * [XMLSerialization XML Serialization]
   * Cookbook
     * Visualizations
     * Data Grouping
