@@ -1,13 +1,59 @@
-#summary One-sentence summary of this page.
+#summary Describes how to run reports directly from your Java code
 
-= Introduction =
+= Introduction = 
 
-Add your content here.
+Reports can be generated directly from your application, typically with only a single line of Java code. First we need a report definition, which defines a report's data sources, queries and display format. 
 
+A report definition can exist in the form of a POJO, an XML String, or as an XML File. Most methods for generating reports are overloaded an allow the developer to provide a report definition in any of these formats.
 
-= Details =
+Below you will find a list of methods to generate reports in HTML and Excel format. These methods a simple facades to simplify the report generation for the developer. We attempt to cover most use cases, but you can always interact with the report engine at a lower level if these don't meet your needs.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= HTML Reports =
+
+The 'HTMLReportBuilder.build' method can be executed to generate a report in HTML format. You can generate a full HTML page, or an HTML fragment which is basically a '<div>' snippet. A Fragment is useful if you want to embed the report's html inside a page, similar to a portlet.
+
+Option 1: provide the XML report definition file, a hash map of report parameters, and the file where the HTML report will be written to the file system.
+{{{
+static void build(File reportDefinitionXML, Map params, File reportResultsFile);
+}}}
+
+Option 2: provide the XML report definition file, a hash map of report parameters, and a boolean value indicating if the report should be rendered as a fragment. The method will generate the report and return it as a String.
+{{{
+static String build(File reportDefinitonXML, Map params, boolean renderAsDiv);
+}}}
+
+Option 3: provide the report definition object as an XML string, a hash map of report parameters, and a boolean value indicating if the report should be rendered as a fragment. The method will generate the report and return it as a String.
+{{{
+static String build(String reportDefinitionXML, Map params, boolean renderAsDiv)
+}}}
+
+Option 4: provide the report definition object (pojo), a hash map of report parameters, and a boolean value indicating if the report should be rendered as a fragment. The method will generate the report and return it as a String.
+{{{
+static String build(ReportDefinition reportDefinition, Map params, boolean renderAsDiv)
+}}}
+
+These options all serve different use cases. For example, option #1 is great for application that wants to quickly generate reports to the file system, while option #3 is great for systems that would like to store report definitions in the database, get the results as a string, and display the contents in a servlet (great for GAE/J) 
+
+= Excel Reports=
+
+The 'ExcelReportBuilder.build' method can be executed to generate a report in Excel format. Please note that a report definition must explicitly contain instructions (design) for building a report in Excel format.
+
+Option 1: provide the XML report definition file, a hash map of report parameters, and the file where the Excel report will be written to the file system.
+{{{
+static void build(File reportDefinitionXML, Map params, File outputFile);
+}}}
+
+Option 2: provide the report definition object (pojo), a hash map of report parameters, and the file where the Excel report will be written to the file system.
+{{{
+static void build(ReportDefinition reportDefiniton, Map params, File outputFile);
+}}}
+
+Option 3: provide the report definition object as an XML string, a hash map of report parameters, and the output stream to which the Excel report should be written. It is then up to the developer to do something with the output stream, such as save it to the file system, etc.  This is great for use with Servlets, allowing the report to be written to the servlet response's output stream.
+{{{
+static void build(File reportDefinitonXML, Map params, OutputStream stream);
+}}}
+
+Option 4: provide the report definition object (pojo), a hash map of report parameters, and the output stream to which the Excel report should be written. The method will generate the report and return it as a String.
+{{{
+static void build(ReportDefinition reportDefiniton, Map params, OutputStream stream);
+}}}
