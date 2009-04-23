@@ -9,7 +9,7 @@ A report can be executed directly from Java in 1 line of code... it doesn't get 
 HTMLReportBuilder.build(inputFile,params,outputFile);
 }}}
 
-Why another reporting engine, you ask? I need a reporting engine that can ultimately live inside Google App Engine (GAE) or any other "restricted" platform that I may choose. Rather that wait around for the possibility of an existing project to support GAE I thought I would build my own. Of course, this only currently works with JDBC, but that is because I started building this months ago, before GAE/J existed, in hopes the Java language would be supported.
+Why another reporting engine, you ask? I need a reporting engine that can ultimately live inside Google App Engine (GAE) or any other "restricted" platform that I may choose. Rather that wait around for the possibility of an existing project to support GAE I thought I would build my own. Of course, this only currently works with JDBC, but that is because I started building this months ago, before GAE/J existed. Now that Java is supported... game on!
 
 The only down side to building your own Reporting Engine is having to create a GUI report designer... if you have any suggestions for this let me know!
 
