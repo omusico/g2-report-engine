@@ -18,21 +18,25 @@
     * [ServletCustomization Customization]
   * [CommandLineTools Command Line Tools]
 ----
-  * Getting Started
+  * Project Details
     * Introduction
     * Download
     * Dependencies
+    * Release Notes
+    * Mailing List
+    * FAQ
   * Integration
     * Java Code
     * Servlet
       * Overview
       * Customization
     * Command Line
-  * Building Reports
+  * Tutorial
     * My First Report
-    * Query Data
-    * Excel Formatting
+    * Querying Data
+    * Excel Export
     * XML Serialization
+  * User Guide
     * Visualizations
     * Data Grouping
     * Data Filtering
@@ -44,3 +48,6 @@
     * Petstore Reports
     * Classic Models Database
     * Classic Models Reports
+  * Documentation
+    * Maven Site
+    * JavaDoc
