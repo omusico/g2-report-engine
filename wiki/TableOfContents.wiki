@@ -17,3 +17,30 @@
     * [ServletIntegration Getting Started]
     * [ServletCustomization Customization]
   * [CommandLineTools Command Line Tools]
+----
+  * Getting Started
+    * Introduction
+    * Download
+    * Dependencies
+  * Integration
+    * Java Code
+    * Servlet
+      * Overview
+      * Customization
+    * Command Line
+  * Building Reports
+    * My First Report
+    * Query Data
+    * Excel Formatting
+    * XML Serialization
+    * Visualizations
+    * Data Grouping
+    * Data Filtering
+    * Data Formatting
+    * Scripting
+    * Report Parameters
+  * Examples
+    * Petstore Database
+    * Petstore Reports
+    * Classic Models Database
+    * Classic Models Reports
