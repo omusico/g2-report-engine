@@ -1,4 +1,5 @@
 #summary Provides an overview of the g2 Report Engine project, features, goals and future roadmap
+#labels Featured
 
 = About =
 
