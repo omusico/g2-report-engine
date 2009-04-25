@@ -8,7 +8,7 @@
     * [ServletIntegration Servlet]
       * [ServletIntegration Overview]
       * Customization
-    * Command Line
+    * [CommandLineOverview Command Line]
   * [MyFirstReport Tutorial]
     * [MyFirstReport My First Report]
     * [XMLSerialization Save to XML]
