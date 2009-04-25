@@ -1,4 +1,5 @@
 #summary Embed Web-based reporting in your application
+#labels Featured
 
 = Introduction =
 
