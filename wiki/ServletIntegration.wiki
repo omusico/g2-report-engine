@@ -32,7 +32,7 @@ _Example:_ http://localhost:8084/ReportViewer.htm?view=input&report=c:\PetLocati
 
 = Screenshots =
 
-This is an example of the user input screen where the user can provide their own input parameters for the report. This page is dynamically generated based on the report definition file provided in the query string:
+This is an example of the user input screen where the user can provide their own input parameters for the report. This page is dynamically generated based on the report definition file provided in the URL:
 [http://g2-report-engine.googlecode.com/svn/docs/screenshot-user-input-thum.png]
 
 This is an example of an HTML generated report, once the user has provided the input parameters:
