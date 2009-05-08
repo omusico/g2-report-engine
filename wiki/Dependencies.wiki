@@ -12,3 +12,5 @@
 || oro-2.0.8.jar || No || Only required if using Velocity / embedded servlet ||
 
 The report engine also requires on *Java 1.6*. This is primarily because we use the new `ScriptManager` to allow for custom scripting inside your report. Using Java 1.6 and `ScriptManager` provide native scripting with javascript as well as the ability to integrate other scripting languages such as groovy, jython, and more.
+
+For your convenience the dependencies have been zipped and provided for download on the [http://code.google.com/p/g2-report-engine/downloads/list Downloads page]
