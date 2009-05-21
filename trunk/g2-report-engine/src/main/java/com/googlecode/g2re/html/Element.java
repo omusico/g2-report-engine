@@ -57,6 +57,22 @@ public abstract class Element {
         }
 
     }
+
+    void addClassToTag(HTMLBuilderArgs args, String defaultClass){
+        
+        //set class
+        if(getStyle()!=null){
+            args.getHtml().append(" class='");
+            args.getHtml().append(getStyle().getName());
+            args.getHtml().append("'");
+        }else {
+            args.getHtml().append(" class='");
+            args.getHtml().append(defaultClass);
+            args.getHtml().append("'");
+        }
+
+    }
+    
     
     /**
      * Adds the id to the HTML string builder element

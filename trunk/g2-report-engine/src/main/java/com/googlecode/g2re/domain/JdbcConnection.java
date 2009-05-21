@@ -4,23 +4,14 @@ package com.googlecode.g2re.domain;
  *
  * @author Brad Rydzewski
  */
-public class JdbcConnection {
+public class JdbcConnection extends DataConnection {
 
-    private String name;
     private String driverClass;
     private String databaseUrl;
     private String databaseUser;
     private String databasePassword;
     private String databaseJndiName;
     
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getDatabaseJndiName() {
         return databaseJndiName;

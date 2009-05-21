@@ -21,9 +21,12 @@ public class DataTable extends BoundElement {
     private List<DataGroup> dataGroups = new ArrayList<DataGroup>();
     private VerticalAlign verticalAlign = null;
     private TextAlign textAlign = null;
+    
+    private static final String DEFAULT_CLASS = "g2-data-table";
 
     private int cellPadding=0;
     private int cellSpacing=0;
+    private int border;
 
     public int getCellPadding() {
         return cellPadding;
@@ -40,6 +43,16 @@ public class DataTable extends BoundElement {
     public void setCellSpacing(int cellSpacing) {
         this.cellSpacing = cellSpacing;
     }
+
+    public int getBorder() {
+        return border;
+    }
+
+    public void setBorder(int border) {
+        this.border = border;
+    }
+    
+    
     
     
 
@@ -104,7 +117,14 @@ public class DataTable extends BoundElement {
                 .append("' cellspacing='")
                 .append(getCellSpacing())
                 .append("' ");
-        this.addClassToTag(args);
+        
+        if(border > 0) {
+            args.getHtml().append(" border='")
+                    .append(getBorder())
+                    .append("' ");
+        }
+        
+        this.addClassToTag(args,DEFAULT_CLASS);
         this.addIdToTag(args);
         
         if(this.getVerticalAlign()!=null) 
