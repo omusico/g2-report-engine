@@ -1,4 +1,5 @@
 #summary Using G2 Report Engine with Google App Engine
+#labels Featured
 
 = Introduction =
 
