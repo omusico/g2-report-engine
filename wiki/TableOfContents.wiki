@@ -16,7 +16,7 @@
     * [ExcelExport Excel Export]
     * [AppEngineSupport App Engine Support]
   * Cookbook
-    * Visualizations
+    * [Visualizations Visualizations]
     * Data Grouping
     * Data Filtering
     * Data Formatting
