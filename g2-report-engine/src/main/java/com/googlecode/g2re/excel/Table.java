@@ -1,5 +1,6 @@
 package com.googlecode.g2re.excel;
 
+import com.googlecode.g2re.domain.DataQuery;
 import com.googlecode.g2re.excel.ExcelBuilderArgs;
 import com.googlecode.g2re.domain.JdbcQuery;
 import com.googlecode.g2re.jdbc.DataSet;
@@ -17,12 +18,12 @@ public class Table {
     private Row headerRow;
     private Row footerRow;
     private Row bodyRow;
-    private JdbcQuery dataSet;
+    private DataQuery dataSet;
     
     public Table(){
         
     }
-    public Table (JdbcQuery dataSet){
+    public Table (DataQuery dataSet){
         setDataSet(dataSet);
     }
 
@@ -31,7 +32,7 @@ public class Table {
      * a tabular format.
      * @return
      */
-    public JdbcQuery getDataSet() {
+    public DataQuery getDataSet() {
         return dataSet;
     }
 
@@ -40,7 +41,7 @@ public class Table {
      * a tabular format.
      * @param dataSet
      */
-    public void setDataSet(JdbcQuery dataSet) {
+    public void setDataSet(DataQuery dataSet) {
         this.dataSet = dataSet;
     }
 
