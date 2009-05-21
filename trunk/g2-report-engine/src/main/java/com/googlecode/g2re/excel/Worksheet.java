@@ -1,8 +1,7 @@
 package com.googlecode.g2re.excel;
 
+import com.googlecode.g2re.domain.DataQuery;
 import com.googlecode.g2re.excel.ExcelBuilderArgs;
-import com.googlecode.g2re.domain.JdbcQuery;
-import jxl.write.WritableSheet;
 
 /**
  * Represents a grid of columns and rows, contained as a "page" in a
@@ -73,7 +72,7 @@ public class Worksheet implements Comparable<Worksheet> {
      * @param dataSet binding the table
      * @return Table added to the Worksheet
      */
-    public Table addTable(JdbcQuery dataSet){
+    public Table addTable(DataQuery dataSet){
         Table newTable = new Table(dataSet);
         setTable(newTable);
         return newTable;
