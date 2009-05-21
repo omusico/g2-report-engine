@@ -1,4 +1,4 @@
-#summary Using G2 Report Engine with Google App Engine
+#summary Generating reports on Google App Engine
 #labels Featured
 
 = Introduction =
