@@ -62,9 +62,9 @@ Next we create the table header row. Follow these steps:
 
 {{{
 GridRow tableHeader = new GridRow();
-tableHeader.addCell(GridCell(new Label("Name")));
-tableHeader.addCell(GridCell(new Label("Description")));
-tableHeader.addCell(GridCell(new Label("Price")));
+tableHeader.addCell(new GridCell(new Label("Name")));
+tableHeader.addCell(new GridCell(new Label("Description")));
+tableHeader.addCell(new GridCell(new Label("Price")));
 table.getHeaderRows().add(tableHeader);
 }}}
 
@@ -76,9 +76,9 @@ Next we create the table body following these steps:
 Note how the `DataElement` expects a `DataColumn` in the constructor. By providing the `DataColumn` we bind the `DataElement` to the appropriate field from the query results. Notice that we do not re-create data columns... we provide the data columns created in the prior steps.
 {{{
 GridRow tableBody = new GridRow();
-tableBody.addCell(GridCell(new DataElement(col1, 0)));
-tableBody.addCell(GridCell(new DataElement(col2, 1)));
-tableBody.addCell(GridCell(new DataElement(col3, 2)));
+tableBody.addCell(new GridCell(new DataElement(col1, 0)));
+tableBody.addCell(new GridCell(new DataElement(col2, 1)));
+tableBody.addCell(new GridCell(new DataElement(col3, 2)));
 table.getBodyRows().add(tableBody);
 }}}
 
