@@ -1,7 +1,7 @@
 <com.googlecode.g2re.domain.ReportDefinition>
   <name>Pet Location Report</name>
-  <created>2009-04-21 01:22:09.375 MST</created>
-  <updated>2009-04-21 01:22:09.375 MST</updated>
+  <created>2009-05-21 00:22:25.593 MST</created>
+  <updated>2009-05-21 00:22:25.593 MST</updated>
   <description>desc goes here</description>
   <author>Brad Rydzewski</author>
   <dataConnections>
@@ -251,6 +251,7 @@
         <dataGroups/>
         <cellPadding>1</cellPadding>
         <cellSpacing>0</cellSpacing>
+        <border>0</border>
       </com.googlecode.g2re.html.DataTable>
     </childElements>
   </htmlWebPage>

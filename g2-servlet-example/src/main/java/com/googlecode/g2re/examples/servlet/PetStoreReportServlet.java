@@ -20,7 +20,10 @@ public class PetStoreReportServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
         String rpt1 = this.getServletContext().getRealPath("WEB-INF\\classes\\PetLocationReport.rxml");
-        arg1.getWriter().print("<a href='ReportViewer.htm?view=input&report="+rpt1+"'>Pet Location Report</a>");
+        String rpt2 = this.getServletContext().getRealPath("WEB-INF\\classes\\PetDashboardReport.rxml");
+         
+        arg1.getWriter().print("<li><a href='ReportViewer.htm?view=input&report="+rpt1+"'>Pet Location Report</a></li>");
+        arg1.getWriter().print("<li><a href='ReportViewer.htm?view=input&report="+rpt2+"'>Pet Dashboard Report</a></li>");
     }
 
 }

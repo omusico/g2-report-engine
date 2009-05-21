@@ -18,7 +18,7 @@ public class ReportDefinition {
     private Date updated = new Date();
     private String description;
     private String author;
-    private List<JdbcConnection> dataConnections = new ArrayList<JdbcConnection>();
+    private List<DataConnection> dataConnections = new ArrayList<DataConnection>();
     private List<ReportParameter> reportParameters = new ArrayList<ReportParameter>();
     private List<DataQuery> dataQueries = new ArrayList<DataQuery>();
     private Workbook excelWorkbook = null;
@@ -41,11 +41,11 @@ public class ReportDefinition {
         this.created = created;
     }
 
-    public List<JdbcConnection> getDataConnections() {
+    public List<DataConnection> getDataConnections() {
         return dataConnections;
     }
 
-    public void setDataConnections(List<JdbcConnection> dataConnections) {
+    public void setDataConnections(List<DataConnection> dataConnections) {
         this.dataConnections = dataConnections;
     }
 

@@ -28,7 +28,11 @@ public class JdbcParameter {
      * @Serial
      */
     private ReportParameter reportParameter;
-
+    /**
+     * Report parameter name.
+     * @Serial
+     */
+    private String name;
 
     public JdbcParameter() {
     }
@@ -121,5 +125,21 @@ public class JdbcParameter {
      */
     public final void setType(final DataType t) {
         this.type = t;
+    }
+
+    /**
+     * Gets the name of the report parameter.
+     * @return name of report parameter.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the report parameter.
+     * @param name name of report parameter.
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }
