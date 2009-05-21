@@ -30,7 +30,7 @@ Each report has a special format defined for Excel exports. So we start by getti
    * we provide the cell's left-to-right order
 *
 {{{
-report.getExcelDocument()
+report.addExcelDocument()
                 /* add worksheet */
                 .addWorksheet("page1", 0)
                 /* add table to worksheet */
