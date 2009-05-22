@@ -73,5 +73,5 @@ Due to classes excluded from App Engine's white-list, the following functionalit
 
 == Missing Features ==
 
-I have not yet had the ability to implement and test the following features:
+I have yet to implement and test the following features:
  # Use of Parameters in the JDO queries
