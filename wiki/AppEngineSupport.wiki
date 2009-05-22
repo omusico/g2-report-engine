@@ -59,7 +59,7 @@ query.getColumns().add(col2);
 
 Now you can start to build the visual components to your report (tables, charts, etc). Refer to the _Design Data Table_ section from the [QueryingData QueryingData] tutorial, which demonstrates adding a data-driven HTML table to a report. 
 
-All data driven components (tables, charts, etc) require you to provide it with a `DataQuery` for data binding. Both `AppEngineQuery` and `JdbcQuery` extend the `List` class.  
+All data driven components (tables, charts, etc) require you to provide it with a `DataQuery` for data binding. Both `AppEngineQuery` and `JdbcQuery` extend the `DataQuery` class.  
 
 == Limitations ==
 
