@@ -36,7 +36,7 @@ conn.setPersistenceManagerFactory(PMF.get());
 report.getDataConnections().add(conn);
 }}}
 
-When creating the query, we link it to the Connection. The query is provided a JDO query string. Note: the query string must contain attribute names in the SELECT clause, which will force JDO to return a `List` of `Object[]`, as opposed to a POJO.
+When creating the query, we link it to the Connection. The query is provided a JDO query string. Note: the query string must contain attribute names in the SELECT clause, which will force JDO to return a `List` of `Object[]`, as opposed to a list of `Person` objects.
 
 {{{
 AppEngineQuery query = new AppEngineQuery();
