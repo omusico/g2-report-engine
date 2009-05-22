@@ -63,7 +63,7 @@ All data driven components (tables, charts, etc) require you to provide it with 
 
 == Limitations ==
 
-Due to use of white-listed classes, the following functionality will not work under Google App Engine:
+Due to classes excluded from App Engine's white-list, the following functionality will not work under Google App Engine:
  # Cannot save the report to a file on the File System
  # Cannot read a `ReportDefinition` from an XML file on the File System
  # Cannot use XStream to convert an xml file to a `ReportDefinition` object **
