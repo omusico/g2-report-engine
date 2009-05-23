@@ -32,17 +32,5 @@ The following features are planned for future releases:
  * Pivot table components
  * Improve scripting capabilities
  * Add PDF and Delimited formats
- * Google App Engine support
+ * Google App Engine support ([AppEngineSupport in-progress])
  * UI for building reports (Eclipse or Netbeans RCP?)
-
-= Key Statistics =
-<table>
-<tr>
-<td>
-<wiki:gadget url="http://www.ohloh.net/p/339111/widgets/project_basic_stats.xml" height="220"  />
-</td>
-<td>
-<wiki:gadget url="http://www.ohloh.net/p/339111/widgets/project_cocomo.xml" height="240"  border="0" />
-</td>
-</tr>
-</table>
