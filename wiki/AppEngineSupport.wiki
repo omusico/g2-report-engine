@@ -28,7 +28,7 @@ public class Person {
 
 First we need to add an `AppEngineConnection` and `AppEngineQuery` to the report. These are the App Engine equivalent to the `JdbcConnection` and `JdbcQuery` from the previous pages. 
 
-You will notice that, for now, we have to pass in the instance of the `PersistenceManagerFactory`. This is something I hope to change, but for now will have to do.
+You will notice that, for now, we have to pass in the instance of the `PersistenceManagerFactory`. _Note: Fix is applied in Trunk, you now pass the `PersistenceManagerFactory` to `Settings.setPersistenceManagerFactory`, which holds all global variables. `PersistenceManagerFactory` therefore only needs to be set once._
 
 {{{
 AppEngineConnection conn = new AppEngineConnection();
@@ -74,4 +74,4 @@ Due to classes excluded from App Engine's white-list, the following functionalit
 == Missing Features ==
 
 I have yet to implement and test the following features:
- # Use of Parameters in the JDO queries
+ # Use of Parameters in the JDO queries. _Update: Feature added in Trunk_
