@@ -320,7 +320,7 @@ public class DataLoadTest {
         
         
         PieChart pie = new PieChart();
-        pie.setDataSet(queryA);
+        pie.setDataQuery(queryA);
         //pie.setHeight(250);
         //pie.setWidth(300);
         pie.setThreeDimensional(true);
@@ -345,7 +345,7 @@ public class DataLoadTest {
         BarChart bar = new BarChart();
         bar.setThreeDimensional(true);
         bar.setTitle("Score Summary");
-        bar.setDataSet(queryA);
+        bar.setDataQuery(queryA);
         bar.setFlipAxis(true);
         bar.setLegendLocation(LegendLocation.none);
         bar.setValueSeriesColumn(col2a);
