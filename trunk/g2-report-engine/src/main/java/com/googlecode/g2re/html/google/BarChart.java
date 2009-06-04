@@ -28,17 +28,18 @@ public class BarChart extends BoundElement {
     private boolean stacked = false;
     private float width = 400;
     private float height = 240;
-    private JdbcQuery dataSet;
+    //private JdbcQuery dataSet;
     private LegendLocation legendLocation = LegendLocation.right;
     private boolean flipAxis = false;
 
+    /*
     public JdbcQuery getDataSet() {
         return dataSet;
     }
 
     public void setDataSet(JdbcQuery dataSet) {
         this.dataSet = dataSet;
-    }
+    }*/
     
     public DataColumn getCategorySeriesColumn() {
         return categorySeriesColumn;
@@ -136,7 +137,7 @@ public class BarChart extends BoundElement {
         }
 
         //gets a dataset and filters it, if applicable
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());//args.getResults().get(getDataSet().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         //create Sets to "pivot" the data

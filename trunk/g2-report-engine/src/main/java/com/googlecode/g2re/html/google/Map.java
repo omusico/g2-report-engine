@@ -1,7 +1,7 @@
 package com.googlecode.g2re.html.google;
 
+import com.googlecode.g2re.Settings;
 import com.googlecode.g2re.domain.DataColumn;
-import com.googlecode.g2re.domain.JdbcQuery;
 import com.googlecode.g2re.html.BoundElement;
 import com.googlecode.g2re.html.HTMLBuilderArgs;
 import com.googlecode.g2re.jdbc.DataSet;
@@ -87,7 +87,7 @@ public class Map extends BoundElement {
         
         //add script files
         args.getScriptFiles().add("http://www.google.com/jsapi");
-        args.getScriptFiles().add("http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ");
+        args.getScriptFiles().add("http://maps.google.com/maps?file=api&amp;v=2&amp;key="+Settings.get().getGoogleMapKey());//ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ");
         
         //make sure this is set to true, so we can load API's
         args.getGoogleModules().add("map");

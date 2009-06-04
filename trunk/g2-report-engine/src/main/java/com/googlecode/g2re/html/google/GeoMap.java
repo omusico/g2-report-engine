@@ -1,5 +1,6 @@
 package com.googlecode.g2re.html.google;
 
+import com.googlecode.g2re.Settings;
 import com.googlecode.g2re.domain.DataColumn;
 import com.googlecode.g2re.domain.JdbcQuery;
 import com.googlecode.g2re.html.BoundElement;
@@ -18,31 +19,12 @@ import com.googlecode.g2re.util.DataSetUtil;
  */
 public class GeoMap extends BoundElement {
     
-    //google map key for hippo.md 
-    //ABQIAAAAvSRoyR6PFHt2ovoo__Yl9BSSxsdd1GPPkN1WWnLC8LMJaaii4BRFrup-zABjkQv-ZOFwQiJUCYEqZg
-    //google map key for http://localhost:8084/
-    //ABQIAAAAvSRoyR6PFHt2ovoo__Yl9BTFRfqDGOwfXAlOK-54sJyR4NNS5RTDyMALdVDUnYb_HGG0c8TME1jEjA
-    
-    //http://localhost:8084/myCalendarTest02/
-    //ABQIAAAAvSRoyR6PFHt2ovoo__Yl9BSyJah21YDC_cablSUmMqJ1Jn9FchS68JWLH7u2L5eMGi4cEahYwDdDAg
-    
-    //WORKS: key=ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ
     private float width = 400f;
     private float height = 240f;
     private DataColumn addressColumn;
     private DataColumn descriptionColumn;
     private DataColumn valueColumn;
-    private JdbcQuery dataSet;
 
-    
-    public JdbcQuery getDataSet() {
-        return dataSet;
-    }
-
-    
-    public void setDataSet(JdbcQuery dataSet) {
-        this.dataSet = dataSet;
-    }
     
     public DataColumn getAddressColumn() {
         return addressColumn;
@@ -89,7 +71,7 @@ public class GeoMap extends BoundElement {
         
         //add script files
         args.getScriptFiles().add("http://www.google.com/jsapi");
-        args.getScriptFiles().add("http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ");
+        args.getScriptFiles().add("http://maps.google.com/maps?file=api&amp;v=2&amp;key="+Settings.get().getGoogleMapKey());//ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ");
         
         //make sure this is set to true, so we can load API's
         args.getGoogleModules().add("geomap");
@@ -101,7 +83,7 @@ public class GeoMap extends BoundElement {
         int valColInt = getValueColumn().getOrder();
 
         //get widgets dataset
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(getDataQuery().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         //get sequence for this object, to distinguish it from other DOM objects and JS variables

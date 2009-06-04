@@ -34,17 +34,7 @@ public class MotionChart extends BoundElement {
     private DataColumn nameColumn;
     private DataColumn dateColumn;
     private List<DataColumn> additionalColumns = new ArrayList<DataColumn>();
-    private JdbcQuery dataSet;
 
-    
-    public JdbcQuery getDataSet() {
-        return dataSet;
-    }
-
-    
-    public void setDataSet(JdbcQuery dataSet) {
-        this.dataSet = dataSet;
-    }
     
     public List<DataColumn> getAdditionalColumns() {
         return additionalColumns;
@@ -110,7 +100,7 @@ public class MotionChart extends BoundElement {
 
         
         //get widgets dataset
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         int seq = args.getSequence();

@@ -1,24 +1,19 @@
 package com.googlecode.g2re.domain;
 
-import javax.jdo.JDOHelper;
+import com.googlecode.g2re.Settings;
 import javax.jdo.PersistenceManagerFactory;
 
 /**
- * Connection to google app engine data store.
+ * Connection to google app engine data store using JDO.
  * @author Brad Rydzewski
  */
 public class AppEngineConnection extends DataConnection {
-    
+
     /**
-     * Persistence manager.
+     * Gets the PersistenceManagerFactory instance used by Google App Engine.
+     * @return PersistenceManagerFactory.
      */
-    private PersistenceManagerFactory pmf = null;
-
     public PersistenceManagerFactory getPersistenceManagerFactory() {
-        return pmf;
-    }
-
-    public void setPersistenceManagerFactory(PersistenceManagerFactory pmf) {
-        this.pmf = pmf;
+        return Settings.get().getPmf();
     }
 }
