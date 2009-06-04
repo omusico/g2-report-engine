@@ -14,6 +14,6 @@ public class AppEngineConnection extends DataConnection {
      * @return PersistenceManagerFactory.
      */
     public PersistenceManagerFactory getPersistenceManagerFactory() {
-        return Settings.get().getPmf();
+        return Settings.get().getPersistenceManagerFactory();
     }
 }

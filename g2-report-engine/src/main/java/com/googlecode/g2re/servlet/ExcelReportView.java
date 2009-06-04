@@ -24,7 +24,7 @@ public class ExcelReportView implements ServletView {
 
             //get report name and suggested type
             String fileName = args.getReportName() + ".xls";
-            String contentType = URLConnection.guessContentTypeFromName(fileName);
+            String contentType = "application/vnd.ms-excel";
 
             //set content type
             args.getResponse().setContentType(contentType);

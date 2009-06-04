@@ -1,17 +1,26 @@
 package com.googlecode.g2re.domain;
 
 import com.googlecode.g2re.jdbc.DataSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 /**
- *
- * @author Brad
+ * Defines a query against the Google App Engine data store, 
+ * using the JDO API.
+ * @author Brad Rydzewski
  */
 public class AppEngineQuery extends DataQuery {
 
+    /**
+     * App Engine data store connection.
+     */
     private AppEngineConnection connection;
+    /**
+     * JDO SQL Query.
+     */
     private String sqlQuery;
 
     public AppEngineConnection getConnection() {
@@ -29,8 +38,7 @@ public class AppEngineQuery extends DataQuery {
     public void setSqlQuery(String sqlQuery) {
         this.sqlQuery = sqlQuery;
     }
-    
-    
+
     
     @Override
     public DataSet execute() {
@@ -40,54 +48,44 @@ public class AppEngineQuery extends DataQuery {
         PersistenceManager pm = null;
         
         try {
-            pm = connection.getPersistenceManagerFactory().getPersistenceManager();//connection.get().getPersistenceManager();
+            
+            //get Persistence Manager from connection
+            pm = connection.getPersistenceManagerFactory()
+                    .getPersistenceManager();
+            
+            //create query
             Query query = pm.newQuery(sqlQuery);
             
-            
+            //if no parameters, we just execute query, plain and simple
             if(getParameters() == null || getParameters().isEmpty()) {
+                
                 results = (List)query.execute();
-                System.out.println("Query executed with " + results.size() + " result(s)");
+            
+            //for parameters, we need to create a map of params and give
+            // to the query
             } else {
                 
-                List<JdbcParameter> params = this.getParameters();
-                Object[] objs = new Object[params.size()];
-                StringBuilder paramDeclareString = new StringBuilder();
-                int i = 0;
-                
-                for(JdbcParameter p : params) {
-                    
-                    objs[i] = p.getValue();
-                    String type = "String";
-                    switch(p.getType()) {
-                        case STRING : type = "String"; break;
-                        case FLOAT : type = "float"; break;
-                        case DATE : type = "Date"; break;
-                        case DOUBLE : type = "double"; break;
-                        case INTEGER : type = "int"; break;
-                    }
-                    
-                    if(i>0) {
-                        paramDeclareString.append(", ");
-                    }
-                    
-                    paramDeclareString.append(type).append(" ").append(p.getName());
+                Map paramMap = new HashMap();                
+                for(JdbcParameter p : getParameters()) {
+                    //add each param to map
+                    paramMap.put(p.getName(),p.getValue());
                 }
-                
-                query.declareParameters(paramDeclareString.toString());
-                results = (List)query.executeWithArray(this.getParameters().toArray());
-                
+
+                //execute query with map
+                results = (List)query.executeWithMap(paramMap);
             }
             
+            //add result set rows (Object[]) to the data set
             ds.setRows(results);
-        } catch(Exception ex) {
             
+        } catch(Exception ex) {
+            //too lazy to catch appropriate exceptions, so let's catch all of them
+            // and print out an error if one occurs for debugging
+            System.out.println(ex.getMessage().toString());
         } finally {
             try { pm.close(); } finally { }
         }
-        
-        
-        
-        
+
         return ds;
     }
 

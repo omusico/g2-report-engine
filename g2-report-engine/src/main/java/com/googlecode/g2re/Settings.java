@@ -63,7 +63,7 @@ public class Settings {
      * PersistenceManager to execute query.
      * @return
      */
-    public PersistenceManagerFactory getPmf() {
+    public PersistenceManagerFactory getPersistenceManagerFactory() {
         return pmf;
     }
 
@@ -73,7 +73,7 @@ public class Settings {
      * Google's App Engine, and must be set manually by the developer.
      * @param pmf
      */
-    public void setPmf(PersistenceManagerFactory pmf) {
+    public void setPersistenceManagerFactory(PersistenceManagerFactory pmf) {
         assert(pmf!=null);
         this.pmf = pmf;
     }
