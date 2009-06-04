@@ -19,15 +19,7 @@ public class Gauge extends BoundElement {
     private float height = 120f;
     private DataColumn nameColumn;
     private DataColumn valueColumn;
-    private JdbcQuery dataSet;
 
-    public JdbcQuery getDataSet() {
-        return dataSet;
-    }
-
-    public void setDataSet(JdbcQuery dataSet) {
-        this.dataSet = dataSet;
-    }
     
     public DataColumn getValueColumn() {
         return valueColumn;
@@ -80,7 +72,7 @@ public class Gauge extends BoundElement {
         int valueColInt = getValueColumn().getOrder();
 
         //get widgets dataset
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());//args.getResults().get(getDataSet().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         //get sequence for this object, to distinguish it from other DOM objects and JS variables

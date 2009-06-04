@@ -22,16 +22,7 @@ public class PieChart extends BoundElement {
     private DataColumn valueColumn;
     private boolean threeDimensional = true;
     private String title = "";
-    private JdbcQuery dataSet;
 
-   
-    public JdbcQuery getDataSet() {
-        return dataSet;
-    }
-
-    public void setDataSet(JdbcQuery dataSet) {
-        this.dataSet = dataSet;
-    }
     
     public DataColumn getValueColumn() {
         return valueColumn;
@@ -95,7 +86,7 @@ public class PieChart extends BoundElement {
         int valueColInt = getValueColumn().getOrder();
 
         //get widgets dataset
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         //get sequence for this object, to distinguish it from other DOM objects and JS variables

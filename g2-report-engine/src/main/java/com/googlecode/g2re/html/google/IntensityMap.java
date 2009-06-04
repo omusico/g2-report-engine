@@ -1,5 +1,6 @@
 package com.googlecode.g2re.html.google;
 
+import com.googlecode.g2re.Settings;
 import com.googlecode.g2re.domain.DataColumn;
 import com.googlecode.g2re.domain.JdbcQuery;
 import com.googlecode.g2re.html.BoundElement;
@@ -29,17 +30,6 @@ public class IntensityMap extends BoundElement {
     private DataColumn valueColumn;
     private IntensityMapRegion region = IntensityMapRegion.world;
     private boolean showOneTab = false;
-    private JdbcQuery dataSet;
-
-    
-    public JdbcQuery getDataSet() {
-        return dataSet;
-    }
-
-    
-    public void setDataSet(JdbcQuery dataSet) {
-        this.dataSet = dataSet;
-    }
     
     
     private List<DataColumn> additionalColumns = new ArrayList<DataColumn>();
@@ -113,7 +103,7 @@ public class IntensityMap extends BoundElement {
         
         //add script files
         args.getScriptFiles().add("http://www.google.com/jsapi");
-        args.getScriptFiles().add("http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ");
+        args.getScriptFiles().add("http://maps.google.com/maps?file=api&amp;v=2&amp;key="+Settings.get().getGoogleMapKey());//ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ");
         
         //make sure this is set to true, so we can load API's
         args.getGoogleModules().add("intensitymap");
@@ -123,8 +113,7 @@ public class IntensityMap extends BoundElement {
         boolean hasAdditionalColumns = getAdditionalColumns() != null;
 
         //get widgets dataset
-        if(getDataSet()==null) throw new RuntimeException("null or invalid dataset provided for " + toString());
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         int seq = args.getSequence();

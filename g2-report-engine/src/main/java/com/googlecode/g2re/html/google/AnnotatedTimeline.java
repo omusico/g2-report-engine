@@ -44,6 +44,8 @@ public class AnnotatedTimeline extends BoundElement {
     private DataColumn dateColumn;
     private String wmode; //'opaque', 'window' or 'transparent'
     private List<DataColumn> additionalColumns = new ArrayList<DataColumn>();
+    
+    /*
     private JdbcQuery dataSet;
 
     
@@ -54,7 +56,7 @@ public class AnnotatedTimeline extends BoundElement {
     
     public void setDataSet(JdbcQuery dataSet) {
         this.dataSet = dataSet;
-    }
+    }*/
     
     public List<DataColumn> getAdditionalColumns() {
         return additionalColumns;
@@ -109,7 +111,7 @@ public class AnnotatedTimeline extends BoundElement {
         int dateColInt = getDateColumn().getOrder();
 
         //get widgets dataset
-        DataSet ds = args.getResults().get(getDataSet().getName());
+        DataSet ds = args.getResults().get(this.getDataQuery().getName());//getDataSet().getName());
         ds = DataSetUtil.getFilteredDataSet(ds, getFilters());
         
         //get sequence for this object, to distinguish it from other DOM objects and JS variables
