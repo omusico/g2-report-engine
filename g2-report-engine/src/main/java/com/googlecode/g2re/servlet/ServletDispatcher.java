@@ -25,6 +25,7 @@ public class ServletDispatcher extends HttpServlet {
     public static final String VARIABLE_PARAM_NAME = "var";
     public static final String HTML_VIEW_NAME = "html";
     public static final String EXCEL_VIEW_NAME = "excel";
+    public static final String PDF_VIEW_NAME = "pdf";
     public static final String INPUT_VIEW_NAME = "input";
     public static final String LIST_VIEW_NAME = "list";
 
@@ -57,6 +58,10 @@ public class ServletDispatcher extends HttpServlet {
         } else if (viewParam.equals(EXCEL_VIEW_NAME)) {
 
             view = ExcelReportView.INSTANCE;
+
+        } else if (viewParam.equals(PDF_VIEW_NAME)) {
+
+            view = PDFReportView.INSTANCE;
 
         } else if (viewParam.equals(INPUT_VIEW_NAME)) {
 
