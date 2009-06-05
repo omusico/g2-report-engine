@@ -21,7 +21,7 @@ Key features currently supported:
  * Charts, maps and visualizations (using Google APIs)
  * Custom scripting using javascript
  * Report parameters allow user input, customization
- * Supports multiple formats including HTML and Excel
+ * Supports multiple formats including HTML, PDF (*New*) and Excel
  * Command line support
  * Servlet support
 
@@ -31,6 +31,6 @@ The following features are planned for future releases:
  * Aggregations when grouping data rows
  * Pivot table components
  * Improve scripting capabilities
- * Add PDF and Delimited formats
+ * Add PDF format (Complete and in Trunk)
  * Google App Engine support ([AppEngineSupport in-progress])
  * UI for building reports (Eclipse or Netbeans RCP?)
