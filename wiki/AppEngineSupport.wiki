@@ -7,7 +7,7 @@ Basic JDO query support has been added to allow G2 Report Engine integration in 
 
 == JDO and POJO ==
 
-First thing is first, we need to define our Entities that are to be stored in the App Engine. For my example, I have created a simple Person entity, with a last and first name.
+First thing is first, we need to define our Entities that are to be stored in the App Engine. For this example we create a simple Person entity with a last and first name.
 
 {{{
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -26,7 +26,7 @@ public class Person {
 
 == Creating the Report ==
 
-First we need to add an `AppEngineConnection` and `AppEngineQuery` to the report. These are the App Engine equivalent to the `JdbcConnection` and `JdbcQuery` from the previous pages. 
+We need to add an `AppEngineConnection` and `AppEngineQuery` to the report. These are the App Engine equivalent to the `JdbcConnection` and `JdbcQuery` from the previous pages. 
 
 You will notice that, for now, we have to pass in the instance of the `PersistenceManagerFactory`. _Note: Fix is applied in Trunk, you now pass the `PersistenceManagerFactory` to `Settings.setPersistenceManagerFactory`, which holds all global variables. `PersistenceManagerFactory` therefore only needs to be set once._
 
