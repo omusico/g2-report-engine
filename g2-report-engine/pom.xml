@@ -7,6 +7,24 @@
     <version>1.0.1</version>
     <name>g2-report-engine</name>
     <url>http://code.google.com/p/g2-report-engine/</url>
+    <description>a java reporting framework</description>
+    <developers>
+        <developer>
+            <name>Brad Rydzewski</name>
+            <url>http://www.facebook.com/brad.rydzewski</url>
+            <timezone>(GMT-09:00) Arizona</timezone>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License</name>
+            <url>http://www.gnu.org/licenses/lgpl.html</url>
+        </license>
+    </licenses>
+    <issueManagement>
+        <system>code.google.com</system>
+        <url>http://code.google.com/p/g2-report-engine/issues/list</url>
+    </issueManagement>
     <build>
         <plugins>
             <plugin>
@@ -85,6 +103,11 @@
                     <artifactId>transaction-api</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>commons-betwixt</groupId>
+            <artifactId>commons-betwixt</artifactId>
+            <version>0.8</version>
         </dependency>
     </dependencies>
 </project>
