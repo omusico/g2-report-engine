@@ -3,8 +3,10 @@ package com.googlecode.g2re;
 import javax.jdo.PersistenceManagerFactory;
 
 /**
- * Contains application settings as property values
- * @author Brad
+ * Contains application settings as property values.
+ * @author Brad Rydzewski
+ * @version 1.0.1
+ * @since 1.0.1
  */
 public class Settings {
 
@@ -37,6 +39,11 @@ public class Settings {
      * to work on localhost domain.
      */
     private String googleMapKey = "ABQIAAAA-O3c-Om9OcvXMOJXreXHAxSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xSbZqVZW2U_OWOxMp3YPfzZl2GavQ";
+
+    /**
+     * Default serialization service.
+     */
+    private SerializerService serializerService = new SerializerServiceBetwixtImpl();
 
     /**
      * Gets the Google Maps API key required by google to render Maps
@@ -76,5 +83,23 @@ public class Settings {
     public void setPersistenceManagerFactory(PersistenceManagerFactory pmf) {
         assert(pmf!=null);
         this.pmf = pmf;
+    }
+
+    /**
+     * Gets the SerializerService the system should use when serializing and
+     * de-serializing java objects to and from xml.
+     * @return
+     */
+    public SerializerService getSerializerService() {
+        return serializerService;
+    }
+
+    /**
+     * Sets the SerializerService the system should use when serializing and
+     * de-serializing java objects to and from xml.
+     * @param serializerService
+     */
+    public void setSerializerService(SerializerService serializerService) {
+        this.serializerService = serializerService;
     }
 }
